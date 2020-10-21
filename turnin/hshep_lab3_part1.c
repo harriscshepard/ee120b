@@ -36,14 +36,14 @@ int main(void) {
 //	lab3 counting 1's in ports
 	for(unsigned char i = 0x00; i < 8; i++)
 	{
-		if(i & PORTA) //if the space is taken
+		if(i & PINA) //if the space is taken
 		{
 			num_ones = num_ones + 1;
 		}
 	}
 	for(unsigned char i = 0x00; i < 8; i++)
         {
-                if(i & PORTB) //if the space is taken
+                if(i & PINB) //if the space is taken
                 {
                         num_ones = num_ones + 1;
                 }
