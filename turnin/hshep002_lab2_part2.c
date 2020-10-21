@@ -31,7 +31,7 @@ int main(void) {
 //	pA1 = PINA & 0x02;
 	for(unsigned char i = 0x00; i < 4; i++)
 	{
-		if(i & PORTA) //if the space is taken
+		if(i & PINA) //if the space is taken
 		{
 			//do nothing
 		}	

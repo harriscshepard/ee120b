@@ -84,17 +84,29 @@ int main(void) {
 	//pa4 if key is in ignition
 	//pa5 if driver is seated
 	//pa6if seatbelt is fastened
+	//else it sets them to 0
 	if(PINA & 0x40)
 	{
 		pa6 = 0x01;
-	}	
+	}
+	else
+	{
+		pa6 = 0x00;
+	}
 	if(PINA & 0x20)
         {
                 pa5 = 0x01;
         }
+	else
+	{
+		pa5 = 0x00;
+	}
 	if(PINA & 0x10)                                                                                                     {
                 pa4 = 0x01;                                                                                                  }
-	
+	else
+	{
+		pa4 = 0x00;
+	}
 	if(pa4 && pa5 && !pa6)
 	{
 		fuelLevel = fuelLevel | 0x80; //set pc7
