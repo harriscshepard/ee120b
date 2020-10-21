@@ -26,6 +26,9 @@ int main(void) {
 	PORTC = 0x00;
 
 	unsigned char fuelLevel = 0x00;
+	unsigned char pa4 = 0x00;// for exercise 3
+	 unsigned char pa5 = 0x00;  
+	 unsigned char pa6 = 0x00;  
 //	unsigned char pA1 = 0x00;
 //	unsigned char pB0 = 0x00;
     /* Insert your solution below */
@@ -77,6 +80,25 @@ int main(void) {
 		fuelLevel = fuelLevel | 0x40;//pc6
 	}	
 
+	//Fasten seatbelt icon pc7, if pa4, pa5 and !pa6
+	//pa4 if key is in ignition
+	//pa5 if driver is seated
+	//pa6if seatbelt is fastened
+	if(PORTA & 0x40)
+	{
+		pa6 = 0x01;
+	}	
+	if(PORTA & 0x20)
+        {
+                pa5 = 0x01;
+        }
+	if(PORTA & 0x10)                                                                                                     {
+                pa4 = 0x01;                                                                                                  }
+	
+	if(pa4 && pa5 && !pa6)
+	{
+		fuelLevel = fuelLevel | 0x80; //set pc7
+	}
 	PORTC = fuelLevel;
 
     }
