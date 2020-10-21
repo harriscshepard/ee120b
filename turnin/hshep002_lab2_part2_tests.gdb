@@ -36,9 +36,9 @@ expectPORTC 0x00
 checkResult
 
 # 4 spaces available
-test "PINA: 0x04 ,PINB: 0xFF => PORTC: 0x04"
+test "PINA: 0x00 ,PINB: 0xFF => PORTC: 0x04"
 
-setPINA 0x04
+setPINA 0x00
 setPINB 0xFF
 continue 5
 expectPORTC 0x04
