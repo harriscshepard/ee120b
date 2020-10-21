@@ -15,14 +15,14 @@
 int main(void) {
     /* Insert DDR and PORT initializations */
 
-//	DDRA = 0x00;
-//	PORTA = 0xFF;
-//	DDRB = 0xFF;
-//	PORTB = 0x00;
+	DDRA = 0x00;
+	PORTA = 0xFF;
+	DDRB = 0xFF;
+	PORTB = 0x00;
 
-//	unsigned char pA0 = 0x00;
-//	unsigned char pA1 = 0x00;
-//	unsigned char pB0 = 0x00;
+	unsigned char pA0 = 0x00;
+	unsigned char pA1 = 0x00;
+	unsigned char pB0 = 0x00;
     /* Insert your solution below */
    while (1) {
 	//pA0 = PINA & 0x01;
