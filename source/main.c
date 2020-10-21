@@ -22,29 +22,22 @@ int main(void) {
 	PORTB = 0x00;
 
 	unsigned char input = 0x00;
-	unsigned char cntavail = 0x00;
+	unsigned char num_ones = 0x00;
 //	unsigned char pA1 = 0x00;
 //	unsigned char pB0 = 0x00;
     /* Insert your solution below */
    while (1) {
 //	pA0 = PINA & 0x01;
 //	pA1 = PINA & 0x02;
-	for(unsigned char i = 0x00; i < 4; i++)
+	for(unsigned char i = 0x00; i < 8; i++)
 	{
 		if(i & PORTA) //if the space is taken
 		{
-			//do nothing
-		}	
-		else
-		{
-			cntavail = cntavail + 1;//increment available spaces by 1
+			num_ones = num_ones + 1;
 		}
 	}
-	if(!cntavail) //if none are available
-	{
-		cntavail = cntavail | 0x80; //sets msb
-	}	
-	PORTB = cntavail;
+	
+	PORTC = ;
 
     }
     return 1;

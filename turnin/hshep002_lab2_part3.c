@@ -18,8 +18,8 @@ int main(void) {
 	//idk this might be initializatino?
 	DDRA = 0x00;
 	PORTA = 0xFF;
-	DDRB = 0xFF;
-	PORTB = 0x00;
+	DDRC = 0xFF;
+	PORTC = 0x00;
 
 	unsigned char input = 0x00;
 	unsigned char cntavail = 0x00;
@@ -44,7 +44,7 @@ int main(void) {
 	{
 		cntavail = cntavail | 0x80; //sets msb
 	}	
-	PORTB = cntavail;
+	PORTC = cntavail;
 
     }
     return 1;

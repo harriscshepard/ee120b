@@ -18,8 +18,8 @@ int main(void) {
 	//idk this might be initializatino?
 	DDRA = 0x00;
 	PORTA = 0xFF;
-	DDRB = 0xFF;
-	PORTB = 0x00;
+	DDRC = 0xFF;
+	PORTC = 0x00;
 
 	unsigned char pA0 = 0x00;
 	unsigned char pA1 = 0x00;
@@ -36,7 +36,7 @@ int main(void) {
 	{
 		pB0 = 0x00;
 	}
-	PORTB = pB0;
+	PORTC = pB0;
 
     }
     return 1;

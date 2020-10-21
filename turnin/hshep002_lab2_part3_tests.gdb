@@ -27,19 +27,17 @@ echo ======================================================\n
 echo Running all tests..."\n\n
 
 # Example test: 0 spaces available
-test "PINA: 0xFF ,PINB: 0xFF => PORTC: 0x80"
+test "PINA: 0xFF => PORTC: 0x80"
 
 setPINA 0xFF
-setPINB 0xFF
 continue 5
 expectPORTC 0x80
 checkResult
 
 # 4 spaces available
-test "PINA: 0x00 ,PINB: 0xFF => PORTC: 0x04"
+test "PINA: 0x00 => PORTC: 0x04"
 
 setPINA 0x00
-setPINB 0xFF
 continue 5
 expectPORTC 0x04
 checkResult
