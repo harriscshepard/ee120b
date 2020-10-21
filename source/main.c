@@ -18,8 +18,12 @@ int main(void) {
 	//idk this might be initializatino?
 	DDRA = 0x00;
 	PORTA = 0xFF;
-	DDRB = 0xFF;
-	PORTB = 0x00;
+	DDRB = 0x00;
+	PORTB = 0xFF;
+
+
+	DDRC = 0xFF;
+	PORTC = 0x00;
 
 	unsigned char input = 0x00;
 	unsigned char num_ones = 0x00;
@@ -36,8 +40,15 @@ int main(void) {
 			num_ones = num_ones + 1;
 		}
 	}
-	
-	PORTC = ;
+	for(unsigned char i = 0x00; i < 8; i++)
+        {
+                if(i & PORTB) //if the space is taken
+                {
+                        num_ones = num_ones + 1;
+                }
+        }
+
+	PORTC = num_ones;
 
     }
     return 1;
