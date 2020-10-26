@@ -62,20 +62,22 @@ int main(void) {
     /* Insert DDR and PORT initializations */
 
 	//idk this might be initializatino?
-	DDRA = 0x00;
+	DDRA = 0x00;//input
 	PORTA = 0xFF;
-	DDRB = 0x00;
-	PORTB = 0xFF;
 
 
-	DDRC = 0xFF;
-	PORTC = 0x07;
-	State = idle;
+	DDRB = 0xFF; //output
+	PORTB = 0x00;
 
-	unsigned char fuelLevel = 0x00;
-	unsigned char pa4 = 0x00;// for exercise 3
-	 unsigned char pa5 = 0x00;  
-	 unsigned char pa6 = 0x00;  
+
+	DDRC = 0xFF;//output
+	PORTC = 0x00;
+	State = locked;	
+
+//	unsigned char fuelLevel = 0x00;
+//	unsigned char pa4 = 0x00;// for exercise 3
+//	 unsigned char pa5 = 0x00;  
+//	 unsigned char pa6 = 0x00;  
 //	unsigned char pA1 = 0x00;
 //	unsigned char pB0 = 0x00;
     /* Insert your solution below */
