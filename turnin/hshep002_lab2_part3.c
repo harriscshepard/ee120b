@@ -1,7 +1,7 @@
 /*	Author: hshep002
- *  Partner(s) Name: 
- *	Lab Section:
- *	Assignment: Lab #  Exercise #
+ *  Partner(s) Name: Harris Shepard
+ *	Lab Section: 23
+ *	Assignment: Lab 2  Exercise 3
  *	Exercise Description: [optional - include for your own benefit]
  *
  *	I acknowledge all content contained herein, excluding template or example
@@ -16,35 +16,19 @@ int main(void) {
     /* Insert DDR and PORT initializations */
 
 	//idk this might be initializatino?
-	DDRA = 0x00;
-	PORTA = 0xFF;
-	DDRC = 0xFF;
-	PORTC = 0x00;
+	DDRA = 0x00; PORTA = 0xFF;
+	DDRC = 0xFF; PORTC = 0x00;
 
-	unsigned char input = 0x00;
 	unsigned char cntavail = 0x00;
-//	unsigned char pA1 = 0x00;
-//	unsigned char pB0 = 0x00;
+	unsigned char tempC = 0x00;
+
     /* Insert your solution below */
    while (1) {
-//	pA0 = PINA & 0x01;
-//	pA1 = PINA & 0x02;
-	for(unsigned char i = 0x00; i < 4; i++)
-	{
-		if(i & PINA) //if the space is taken
-		{
-			//do nothing
-		}	
-		else
-		{
-			cntavail = cntavail + 1;//increment available spaces by 1
-		}
-	}
-	if(!cntavail) //if none are available
-	{
-		cntavail = cntavail | 0x80; //sets msb
-	}	
-	PORTC = cntavail;
+	cntavail = !(PINA & 0x01)+!(PINA & 0x02)+!(PINA & 0x04)+!(PINA & 0x08);
+	tempC = PORTC & 0x70; //A6-A4
+
+	//writes only to C7 and C3-C0
+	PORTC = (cntavail) ? (tempC + cntavail):(0x80 + tempC + cntavail); //set C7 if !cntavail
 
     }
     return 1;
