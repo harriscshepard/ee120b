@@ -1,7 +1,7 @@
 /*	Author: hshep002
- *  Partner(s) Name: 
- *	Lab Section:
- *	Assignment: Lab #  Exercise #
+ *  Partner(s) Name: Harris Shepard
+ *	Lab Section: 23
+ *	Assignment: Lab 3  Exercise 1
  *	Exercise Description: [optional - include for your own benefit]
  *
  *	I acknowledge all content contained herein, excluding template or example
@@ -16,39 +16,24 @@ int main(void) {
     /* Insert DDR and PORT initializations */
 
 	//idk this might be initializatino?
-	DDRA = 0x00;
-	PORTA = 0xFF;
-	DDRB = 0x00;
-	PORTB = 0xFF;
+	DDRA = 0x00; PORTA = 0xFF;
+	DDRB = 0x00; PORTB = 0xFF;
+	DDRC = 0xFF; PORTC = 0x00;
 
-
-	DDRC = 0xFF;
-	PORTC = 0x00;
 	unsigned char num_ones = 0x00;
-//	unsigned char pA1 = 0x00;
-//	unsigned char pB0 = 0x00;
+	unsigned char cur_bit = 0x01;
+
     /* Insert your solution below */
    while (1) {
-	num_ones = 0x00;
-//	pA0 = PINA & 0x01;
-//	pA1 = PINA & 0x02;
-//	lab3 counting 1's in ports
-	for(unsigned char i = 0x00; i < 8; i++)
-	{
-		if(i & PINA) //if the space is taken
+		num_ones = 0x00;
+		cur_bit = 0x01;
+		for(int i = 0; i< 8; i++)
 		{
-			num_ones = num_ones + 1;
+			num_ones += (PINA&cur_bit) ? 1 : 0;
+			num_ones += (PINB&cur_bit) ? 1 : 0;
+			cur_bit = cur_bit *2;
 		}
-	}
-	for(unsigned char i = 0x00; i < 8; i++)
-        {
-                if(i & PINB) //if the space is taken
-                {
-                        num_ones = num_ones + 1;
-                }
-        }
-
-	PORTC = num_ones;
+		PORTC = num_ones;
 
     }
     return 1;

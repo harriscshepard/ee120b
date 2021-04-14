@@ -54,10 +54,12 @@ int main(void)
        else //addition is not safe, at least one input is >63
        {
             //check msb's again
+
+            
             temp_a = (PINA | 0x80)? 0x01 :0x00;
             temp_b = (PINB | 0x80)? 0x01 :0x00;
             temp_c = (PINC | 0x80)? 0x01 :0x00;
-            if(!(temp_a+temp_b+temp_c)) //each input 63<x<128
+            if(!(temp_a+temp_b+temp_c)) //each input x<128
             {
                 is_overweight = 0x01;
                 is_difference = 0x00;

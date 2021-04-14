@@ -1,7 +1,7 @@
 /*	Author: hshep002
- *  Partner(s) Name: 
- *	Lab Section:
- *	Assignment: Lab #  Exercise #
+ *  Partner(s) Name: Harris Shepard
+ *	Lab Section: 23
+ *	Assignment: Lab 3  Exercise 3
  *	Exercise Description: [optional - include for your own benefit]
  *
  *	I acknowledge all content contained herein, excluding template or example
@@ -16,28 +16,20 @@ int main(void) {
     /* Insert DDR and PORT initializations */
 
 	//idk this might be initializatino?
-	DDRA = 0x00;
-	PORTA = 0xFF;
-	DDRB = 0x00;
-	PORTB = 0xFF;
+	DDRA = 0x00; PORTA = 0xFF;
+	DDRB = 0x00; PORTB = 0xFF;
+	DDRC = 0xFF; PORTC = 0x00;
 
-
-	DDRC = 0xFF;
-	PORTC = 0x00;
 
 	unsigned char fuelLevel = 0x00;
-	unsigned char pa4 = 0x00;// for exercise 3
-	 unsigned char pa5 = 0x00;  
-	 unsigned char pa6 = 0x00;  
-//	unsigned char pA1 = 0x00;
-//	unsigned char pB0 = 0x00;
-    /* Insert your solution below */
+	unsigned char pina_lsbs = 0x00;
+
    while (1) {
-//	pA0 = PINA & 0x01;
-//	pA1 = PINA & 0x02;
+
 //	lab3 counting 1's in ports
 	fuelLevel = 0x00;
-	switch(PINA) {
+	pina_lsbs = PINA & 0x0F;
+	switch(pina_lsbs) {
 	case 1:
 	case 2:
 		//pc5 lights
@@ -75,42 +67,16 @@ int main(void) {
 		break;
 	}
 	//low fuel warning
-	if(PINA < 5)//if 4 or less
+	if(pina_lsbs < 5)//if 4 or less
 	{
 		fuelLevel = fuelLevel | 0x40;//pc6
 	}	
+	//fasten seatbelt
+	if((PINA&0x10) && (PINA&0x20) && !(PINA&0x40))
+	{
+		fuelLevel = fuelLevel | 0x80;//pc7
+	}
 
-	//Fasten seatbelt icon pc7, if pa4, pa5 and !pa6
-	//pa4 if key is in ignition
-	//pa5 if driver is seated
-	//pa6if seatbelt is fastened
-	//else it sets them to 0
-	if(PINA & 0x40)
-	{
-		pa6 = 0x01;
-	}
-	else
-	{
-		pa6 = 0x00;
-	}
-	if(PINA & 0x20)
-        {
-                pa5 = 0x01;
-        }
-	else
-	{
-		pa5 = 0x00;
-	}
-	if(PINA & 0x10)                                                                                                     {
-                pa4 = 0x01;                                                                                                  }
-	else
-	{
-		pa4 = 0x00;
-	}
-	if(pa4 && pa5 && !pa6)
-	{
-		fuelLevel = fuelLevel | 0x80; //set pc7
-	}
 	PORTC = fuelLevel;
 
     }

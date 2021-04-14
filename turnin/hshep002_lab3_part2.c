@@ -1,7 +1,7 @@
 /*	Author: hshep002
- *  Partner(s) Name: 
- *	Lab Section:
- *	Assignment: Lab #  Exercise #
+ *  Partner(s) Name: Harris Shepard
+ *	Lab Section: 23
+ *	Assignment: Lab 3  Exercise 2
  *	Exercise Description: [optional - include for your own benefit]
  *
  *	I acknowledge all content contained herein, excluding template or example
@@ -16,25 +16,19 @@ int main(void) {
     /* Insert DDR and PORT initializations */
 
 	//idk this might be initializatino?
-	DDRA = 0x00;
-	PORTA = 0xFF;
-	DDRB = 0x00;
-	PORTB = 0xFF;
-
-
-	DDRC = 0xFF;
-	PORTC = 0x00;
+	DDRA = 0x00; PORTA = 0xFF;
+	DDRB = 0x00; PORTB = 0xFF;
+	DDRC = 0xFF; PORTC = 0x00;
 
 	unsigned char fuelLevel = 0x00;
-//	unsigned char pA1 = 0x00;
-//	unsigned char pB0 = 0x00;
-    /* Insert your solution below */
+	unsigned char pina_lsbs = 0x00;
+
    while (1) {
-//	pA0 = PINA & 0x01;
-//	pA1 = PINA & 0x02;
+
 //	lab3 counting 1's in ports
 	fuelLevel = 0x00;
-	switch(PINA) {
+	pina_lsbs = PINA & 0x0F;
+	switch(pina_lsbs) {
 	case 1:
 	case 2:
 		//pc5 lights
@@ -72,7 +66,7 @@ int main(void) {
 		break;
 	}
 	//low fuel warning
-	if(PINA < 5)//if 4 or less
+	if(pina_lsbs < 5)//if 4 or less
 	{
 		fuelLevel = fuelLevel | 0x40;//pc6
 	}	
